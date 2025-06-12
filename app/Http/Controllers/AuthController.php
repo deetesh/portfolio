@@ -32,7 +32,7 @@ class AuthController extends Controller
         // generate session
         request()->session()->regenerate();
 
-        return redirect('/welcome'); 
+        return redirect('/index'); 
     }
 
 
