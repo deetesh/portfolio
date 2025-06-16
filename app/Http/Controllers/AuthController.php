@@ -24,9 +24,6 @@ class AuthController extends Controller
             throw ValidationException::withMessages([
                 'email' => 'Unmatch credentials',
             ]);
-        }else
-        {
-            abort(404); 
         }
 
         // generate session

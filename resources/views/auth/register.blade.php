@@ -35,7 +35,7 @@
                 </div>
                   <div class="mt-7">
                     <div class="flex justify-center items-center">  
-                        <x-link href="/">
+                        <x-link href="/login">
                             Login
                         </x-link>
                     </div>
