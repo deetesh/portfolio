@@ -20,8 +20,10 @@ Route::controller(BlogController::class)->group(function() {
     Route::get('/', 'index');
     Route::get('/create', 'create');
     Route::post('/create_blog', 'save');
-    Route::get('/edit', 'edit');
-    Route::get('/show', 'show');
+    Route::get('/edit/{id}', 'edit');
+    Route::post('/edit_blog/{id}', 'editBlog');
+    Route::get('/show', 'preview');
+    Route::get('/delete/{id}', 'delete');
 })->middleware(AuthMiddleware::class); 
 
 Route::get('/contact', function () {

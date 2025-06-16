@@ -1,4 +1,6 @@
 <x-header></x-header>
+<div class="grid row-span-12  ">
+ 
 <form action="/create_blog" method="POST">
   @csrf
   <div class="space-y-12">
@@ -19,6 +21,37 @@
 
   <div class="grid grid-cols-3 gap-4">
     <x-button>Save</x-button> 
-    <x-link reference="form-btn" href='/show'>Cancel</x-button> 
+    <x-link reference="form-btn" href='/create'>Cancel</x-button> 
   </div>
 </form>
+
+</div>
+<!-- component -->
+<div class="flex min-h-screen items-center justify-center">
+  <div class="overflow-x-auto ">
+    <table class="min-w-full bg-white shadow-md rounded-xl">
+      <thead>
+        <tr class="bg-blue-gray-100 text-gray-700">
+          <th class="py-3 px-4 text-left">Page Title</th>
+          <th class="py-3 px-4 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-blue-gray-900">
+         @foreach ($blogs as $blog)
+          <tr class="border-b border-blue-gray-200">
+            <td class="py-3 px-4">{{ $blog->page_title }}</td>
+            <td class="py-3 px-4">
+              <x-link href="/edit/{{$blog->id}}" reference="link-btn">Edit</x-link>
+            </td>
+            <td class="py-3 px-4">
+              <x-link href="/delete/{{$blog->id}}" reference="link-btn">Delete</x-link>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+    <div class="mt-2">
+      {{ $blogs->links() }}
+    </div>
+  </div>
+</div>
