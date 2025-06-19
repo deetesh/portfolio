@@ -29,7 +29,7 @@ class AuthController extends Controller
         // generate session
         request()->session()->regenerate();
 
-        return redirect('/index'); 
+        return redirect('/'); 
     }
 
 
@@ -53,10 +53,14 @@ class AuthController extends Controller
         // login
         Auth::login($oUser);
         // redirect on Login
-        return redirect('/');
+        return redirect('/login');
     }
     
     public function showForgetPw()  {
         return view('auth.forget-pw');
+    }
+    public function logout()  {
+        Auth::logout();
+        return redirect()->to('/'); 
     }
 }

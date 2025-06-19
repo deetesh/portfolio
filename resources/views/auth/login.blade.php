@@ -24,11 +24,11 @@
           </div>
             <div class="mt-7">
               <div class="flex justify-center items-center">
-                <x-link href="/forget-pw">
+                <x-link reference="a" href="/forget-pw">
                   Forgot password?
                 </x-link>
-                  <x-link href="/register">
-                  Register
+                <x-link reference="a" href="/register">
+                Register
                 </x-link>
               </div>
           </div>
