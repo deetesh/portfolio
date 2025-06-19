@@ -21,6 +21,25 @@
                             </x-link>
 
                         </li>
+                        @auth
+                        <li class="text-left">
+                            <x-link href="/create" reference='a'>
+                                Add Blog
+                            </x-link>
+                        </li>
+                        <li class="text-left">
+                            <x-link href="/logout" reference='a'>
+                                Log out
+                            </x-link>
+                        </li>
+                        @endauth
+                        @guest
+                        <li class="text-left">
+                            <x-link href="/login" reference='a'>
+                                Log In
+                            </x-link>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
                 <!-- Right Nav -->
@@ -53,7 +72,7 @@
             </div>
         </nav>
     </header>
-    <div class="">
+    <div>
         <!-- / Navbar -->
         <!-- Name section -->
         <section class="flex flex-col items-center justify-center h-screen  -my-20 md:-mt-48 px-8">
@@ -178,12 +197,47 @@
             </div>
         </section>
     </div>
+
+
+    {{-- <link rel="stylesheet" href="https://cdn.tailgrids.com/tailgrids-fallback.css" /> --}}
+
+
+<!-- ====== Blog Section Start -->
+<section class="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
+<!-- Full-width fluid until the `md` breakpoint, then lock to container -->
+<div class="md:container md:mx-auto">
+    <div class="flex flex-wrap -mx-4">
+        @foreach ($blogs as $blog)
+            <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+                <div class="  mx-auto mb-10">
+                    {{-- <div class="rounded overflow-hidden mb-8">
+                        <img
+                            src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-01.jpg"
+                            alt="image"
+                            class="w-full"
+                            />
+                    </div> --}}
+                    <div>
+                        <h3>
+                            <x-link href="/preview/{{$blog->id}}" reference="blog-index-link">
+                            {{$blog->page_title}}
+                            </x-link>
+                        </h3>
+                        <p class="text-base text-body-color">
+                           {{$blog->summary}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {{-- <x-blog-component> {{$blog->page_title}}</x-blog_list> --}}
+        @endforeach 
+    </div>
+</div>
+</section>
+<!-- ====== Blog Section End -->
     <footer class="absolute w-full h-36 bottom-0 p-8 px-16 bg-gray-800 text-gray-50">
         <p class="text-2xl">Thank you for checking out my portfolio</p>
         <a class="text-lg" href="mailto:gdeetesh@gmail.com">gdeetesh@gmail.com</a>
-        @guest
-            <div class="mt-2"><x-link reference="link-btn" href='/create' >Add Blog</x-link></div>
-        @endguest     
     </footer>
     <div class="h-80">
     </div>

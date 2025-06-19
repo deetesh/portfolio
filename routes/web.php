@@ -13,6 +13,7 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/register', 'showRegister');
     Route::post('/register', 'register');
     Route::get('/forget-pw', 'showForgetPw');
+    Route::get('/logout', 'logout');
 }); 
 
 
@@ -24,6 +25,7 @@ Route::controller(BlogController::class)->group(function() {
     Route::post('/edit_blog/{id}', 'editBlog');
     Route::get('/show', 'preview');
     Route::get('/delete/{id}', 'delete');
+    Route::get('/preview/{id}', 'preview');
 })->middleware(AuthMiddleware::class); 
 
 Route::get('/contact', function () {
